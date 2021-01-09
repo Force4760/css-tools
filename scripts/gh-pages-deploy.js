@@ -2,7 +2,7 @@ const execa = require("execa");
 
   (async () => {
     try {
-      await execa("git", ["checkout", "--orphan", "gh-pages"]);
+      await execa("git", ["checkout", "gh-pages"]);
       console.log("Building...");
       await execa("npm", ["run", "build"]);
       const folderName = "build";
