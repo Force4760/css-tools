@@ -1,5 +1,5 @@
 <script>
-  export let fun;
+  export let calc;
   export let text;
 </script>
 
@@ -31,4 +31,4 @@
   }
 </style>
 
-<main><button on:click={fun} class="btn"><span>{text}</span></button></main>
+<main><button on:click={calc} class="btn"><span>{text}</span></button></main>

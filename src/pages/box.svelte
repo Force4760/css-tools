@@ -193,6 +193,6 @@
         <Color bind:value={bsc} text="Box Shadow (Color)" />
     {/if}
     <div class="btn">
-        <Btn text="CSS!" fun={modalOC} />
+        <Btn text="CSS!" calc={modalOC} />
     </div>
 </main>

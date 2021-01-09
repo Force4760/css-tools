@@ -8,8 +8,9 @@
     };
     function copyToClipboard() {
         var elem = document.createElement("textarea");
+        var cssT = document.getElementById("css-text");
         document.body.appendChild(elem);
-        elem.value = text || "CSS goes here!";
+        elem.value = cssT.textContent;
         elem.select();
         document.execCommand("copy");
         document.body.removeChild(elem);
