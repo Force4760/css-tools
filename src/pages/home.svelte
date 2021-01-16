@@ -4,6 +4,32 @@
     import Nav from "../components/nav.svelte";
 </script>
 
+<Nav />
+
+<main>
+    <div class="container">
+        <h1>CSS TOOLS</h1>
+        <div>
+            <p>To help people with CSS!</p>
+            <p>
+                Customize Borders, Box shadow, Gradients, Image filters and many
+                more!
+            </p>
+            <p>
+                Copy the CSS code you generate so that you can use it in your
+                own projects!
+            </p>
+        </div>
+    </div>
+
+    <div class="btn">
+        <a href="#/box">Box</a>
+        <a href="#/gradient">Gradient</a>
+        <a href="#/filter">Filter</a>
+        <a href="#/text">Text</a>
+    </div>
+</main>
+
 <style>
     .container {
         display: flex;
@@ -30,7 +56,7 @@
     }
     .btn {
         width: 700px;
-        max-width: 100%;
+        max-width: 70%;
         margin: 20px auto;
         display: flex;
         align-items: center;
@@ -80,28 +106,3 @@
         }
     }
 </style>
-
-<Nav />
-
-<main>
-    <div class="container">
-        <h1>CSS TOOLS</h1>
-        <div>
-            <p>To help people with CSS!</p>
-            <p>
-                Customize Borders, Box shadow, Gradients, Image filters and many
-                more!
-            </p>
-            <p>
-                Copy the CSS code you generate so that you can use it in your
-                own projects!
-            </p>
-        </div>
-    </div>
-
-    <div class="btn">
-        <a href="#/box">Box</a>
-        <a href="#/gradient">Gradient</a>
-        <a href="#/filter">Filter</a>
-    </div>
-</main>

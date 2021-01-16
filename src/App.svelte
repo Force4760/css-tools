@@ -6,9 +6,12 @@
 	import Filter from "./pages/filter.svelte";
 	import Gradient from "./pages/gradient.svelte";
 	import Home from "./pages/home.svelte";
+	import Text from "./pages/text.svelte";
 
 	const routes = {
 		"/box": Box,
+
+		"/text": Text,
 
 		"/gradient": Gradient,
 

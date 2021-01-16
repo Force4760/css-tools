@@ -33,6 +33,8 @@
 <aside class:open>
     <nav>
         <a href="#/box">Box</a>
-        <a href="#/gradient">Gradient</a><a href="#/filter">Filter</a>
+        <a href="#/gradient">Gradient</a>
+        <a href="#/filter">Filter</a>
+        <a href="#/text">Text</a>
     </nav>
 </aside>

@@ -5,6 +5,6 @@
     }
 </style>
 
-<svg width="100" height="30">
+<svg href="#/" width="100" height="30">
     <text x="0" y="20">CSS Tools</text>
 </svg>
