@@ -1,7 +1,21 @@
 <script>
-	import Modal from "./components/modal.svelte";
+	import Router from "svelte-spa-router";
+	import Nav from "./components/nav.svelte";
 
 	import Box from "./pages/box.svelte";
+	import Filter from "./pages/filter.svelte";
+	import Gradient from "./pages/gradient.svelte";
+	import Home from "./pages/home.svelte";
+
+	const routes = {
+		"/box": Box,
+
+		"/gradient": Gradient,
+
+		"/filter": Filter,
+
+		"/": Home,
+	};
 </script>
 
 <style>
@@ -22,5 +36,5 @@
 	}
 </style>
 
-<Box />
+<Router {routes} />
 <main />

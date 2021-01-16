@@ -1,6 +1,9 @@
 <script>
     export let value;
     export let text;
+    export let min;
+    export let max;
+    export let step = "1";
 </script>
 
 <style>
@@ -57,8 +60,9 @@
         <input
             bind:value
             type="range"
-            min="1"
-            max="200"
+            {min}
+            {max}
+            {step}
             class="slider"
             id="myRange" />
     </div>

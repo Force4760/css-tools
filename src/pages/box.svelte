@@ -4,6 +4,7 @@
     import Color from "../components/color.svelte";
     import Input from "../components/input.svelte";
     import Modal from "../components/modal.svelte";
+    import Nav from "../components/nav.svelte";
     import Select from "../components/select.svelte";
     import Slider from "../components/slider.svelte";
     import Slider2 from "../components/slider2.svelte";
@@ -45,7 +46,7 @@
     let boxpl = 0;
 
     //border
-    let bostyle;
+    let bostyle = "solid";
     let boc = "#000000";
     let bow = 0;
     let brtl = 0;
@@ -59,6 +60,28 @@
     let bsb = 0;
     let bss = 0;
     let bsc = "#000000";
+    let bso = 1;
+    $: realBsc = hexToRGB(bsc, bso);
+    function hexToRGB(h, o) {
+        let r = 0,
+            g = 0,
+            b = 0;
+
+        // 3 digits
+        if (h.length == 4) {
+            r = "0x" + h[1] + h[1];
+            g = "0x" + h[2] + h[2];
+            b = "0x" + h[3] + h[3];
+
+            // 6 digits
+        } else if (h.length == 7) {
+            r = "0x" + h[1] + h[2];
+            g = "0x" + h[3] + h[4];
+            b = "0x" + h[5] + h[6];
+        }
+
+        return "rgba(" + +r + "," + +g + "," + +b + "," + +o + ")";
+    }
 
     $: styles = {
         boxbc: `${boxbc}`,
@@ -78,7 +101,7 @@
         bsv: `${bsv}px`,
         bsb: `${bsb}px`,
         bss: `${bss}px`,
-        bsc: `${bsc}`,
+        bsc: `${realBsc}`,
         bow: `${bow}px`,
         boc: `${boc}`,
         bostyle: `${bostyle}`,
@@ -91,22 +114,19 @@
     $: cssVarStyles = Object.entries(styles)
         .map(([key, value]) => `--${key}:${value}`)
         .join(";");
-    let css = `
-        .box {
-            height: ${boxh};
-            width: ${boxw};
-            text-align: left;
-            padding: ${boxpt} ${boxpr} ${boxpb} ${boxpl};
+    $: css = `
+            height: ${boxh}px;
+            width: ${boxw}px;
+            padding: ${boxpt}px ${boxpr}px ${boxpb}px ${boxpl}px;
             background-color: ${boxbc};
             color: ${boxc};
-            margin: ${mart} ${marr} ${marb} ${marl};
-            border-top-left-radius: ${brtl};
-            border-top-right-radius: ${brtr};
-            border-bottom-right-radius: ${brbr};
-            border-bottom-left-radius: ${brbl};
-            box-shadow: ${bsh} ${bsv} ${bsb} ${bss} ${bsc};
-            border: ${bow} ${bostyle} ${boc};
-        }
+            margin: ${mart}px ${marr}px ${marb}px ${marl}px;
+            border-top-left-radius: ${brtl}px;
+            border-top-right-radius: ${brtr}px;
+            border-bottom-right-radius: ${brbr}px;
+            border-bottom-left-radius: ${brbl}px;
+            box-shadow: ${bsh}px ${bsv}px ${bsb}px ${bss}px ${bsc};
+            border: ${bow}px ${bostyle} ${boc};
     `;
 
     const modalOC = () => {
@@ -154,6 +174,7 @@
     }
 </style>
 
+<Nav />
 <Modal text={css} bind:show />
 <main style={cssVarStyles}>
     <div class="container">
@@ -163,8 +184,8 @@
 
     {#if property === 'Box'}
         <Input bind:value={text} name="Text" />
-        <Slider2 bind:value={boxw} text="Box Width" />
-        <Slider2 bind:value={boxh} text="Box Height" />
+        <Slider2 bind:value={boxw} text="Box Width" min="1" max="200" />
+        <Slider2 bind:value={boxh} text="Box Height" min="1" max="200" />
         <Color bind:value={boxbc} text="Box (Background Color)" />
         <Color bind:value={boxc} text="Box (Foreground Color)" />
     {:else if property === 'Margin'}
@@ -190,6 +211,12 @@
         <Slider bind:value={bsv} text="Box Shadow (Vertical Lenght)" />
         <Slider bind:value={bsb} text="Box Shadow (Blur Radius)" />
         <Slider bind:value={bss} text="Box Shadow (Spread Radius)" />
+        <Slider2
+            bind:value={bso}
+            text="Box Shadow (Opacity)"
+            min="0"
+            max="1"
+            step="0.1" />
         <Color bind:value={bsc} text="Box Shadow (Color)" />
     {/if}
     <div class="btn">
